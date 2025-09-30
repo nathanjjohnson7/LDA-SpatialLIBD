@@ -32,15 +32,20 @@ The BBC News Dataset [2] consists of 2225 articles that fall under 5 different t
 Here are the values as percentages of documents that fall under each real topic:
 
 ```
-  T0   T2   T3   T4   T5
+  T1   T2   T3   T4   T5
 [0.93 0.00 0.00 0.02 0.05] business
 [0.01 0.92 0.01 0.04 0.02] entertainment
 [0.03 0.01 0.00 0.04 0.92] politics
 [0.00 0.07 0.84 0.00 0.10] sport
 [0.02 0.03 0.02 0.92 0.01] tech
+
+(business -> topic 1, entertainment -> topic 2, politics -> topic 5, sport -> topic 3, tech -> topic 4)
+Overall Accuracy: 90.6% 
 ```
 
 93% of business articles fall under latent topic 1, 92% of entertainment articles fall under latent topic 2, 84% of sport articles fall under latent topic 3, 92% of tech articles fall under latent topic 4 and 92% of politics articles fall under latent topic 5. This shows that our LDA implementation is able to capture the main themes in the BBC News dataset, with the majority of articles correctly clustered under their respective latent topics. Unfortunately, minor overlaps exists between the latent topics, which might indicate similarities between articles of different topics. For example, 7% of sports articles were predicted as entertainment (latent topic 2). Sport is a form of entertainment so this might be expected.
+
+Overall, we have an accuracy of 90.6%. This shows that our implementation works well, so we now move on to applying it for cell clustering in the human dorsolateral prefrontal cortex (DLPFC) using spatial transcriptomics data.
 
 ### Cell Clustering on SpatialLIBD Data
 Here, I attempt to implement the STdeconvolve algorithm introduced in the paper "Reference-free cell type deconvolution of multi-cellular pixel-resolution spatially resolved transcriptomics data" (Miller et al.). I've chosen the Spatial LIBD dataset [3] which contains the gene expressions of multiple spots located in the human dorsolateral prefrontal cortex (DLPFC). Each spot contains multiple cells, and we use my LDA implementation to cluster the spots according to gene expression, to try and identify the dominant cell type in that spot. The DLPFC tissue is separated into 7 sections: layers 1 through 6 and white matter. I was intially under the impression that each layer was predominantly made of one cell but it turns out that this is not the case. Each spot in the dataset has a layer label but there are no labels for the actual cell types. For this reason, I was unable to carry out actual cell type deconvolution, but instead we attempt to cluster according to cortical layer.
