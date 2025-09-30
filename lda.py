@@ -129,11 +129,10 @@ class LDA_Unvectorized:
             if np.linalg.norm(h_inv_g) < 1e-6:
                 break
                 
-    def complete_loop(self, max_iters=100):
+    def complete_loop(self, max_iters=100, tol = 1e-3):
         old_loglikelihood = -np.inf
         loglikelihood = 0
         iters = 0
-        tol = 1e-3
         while iters < max_iters and abs(loglikelihood - old_loglikelihood) > tol:
             old_loglikelihood = loglikelihood
             loglikelihood = self.e_step()
@@ -251,11 +250,10 @@ class LDA:
             if np.linalg.norm(h_inv_g) < 1e-6:
                 break
                 
-    def complete_loop(self, max_iters=100):
+    def complete_loop(self, max_iters=100, tol = 1e-3):
         old_loglikelihood = -np.inf
         loglikelihood = 0
         iters = 0
-        tol = 1e-3
         while iters < max_iters and abs(loglikelihood - old_loglikelihood) > tol:
             old_loglikelihood = loglikelihood
             loglikelihood = self.e_step()
