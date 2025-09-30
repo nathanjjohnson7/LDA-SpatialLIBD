@@ -3,7 +3,7 @@
 An implementation of Latent Dirichlet Allocation, from scratch, demonstrated with two examples:  
 
 - **BBC News Topic Identification** (`lda_bbc_news.py`)**:** Categorizes BBC News articles based on the topic.
-- **Cell Clustering on SpatialLIBD Data** (lda_spatialLIBD.py)**:** Clusters cells based on gene expression from the human dorsolateral prefrontal cortex (DLPFC) using the SpatialLIBD dataset.
+- **Cell Clustering on SpatialLIBD Data** (`lda_spatialLIBD.py`)**:** Clusters cells based on gene expression from the human dorsolateral prefrontal cortex (DLPFC) using the SpatialLIBD dataset.
 
 ### What is (LDA)?
 Latent Dirichlet Allocation is a generative probabilistic graphical model used for topic modelling. Every document in the dataset (spots, in the case of spatial transcriptomics), is represented as a mixture of multiple latent (hidden) topics. The latent topics are represented as distributions over words (genes, in the case of spatial transcriptomics). The model is considered generative since it learns distributions that allow one to generate documents of certain topics.
